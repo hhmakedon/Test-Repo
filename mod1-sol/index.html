@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" ng-app="LunchCheck">
+  <head>
+    <title>Lunch Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+
+    <style>
+      .message {
+        font-size: 1.3em;
+        font-weight: bold;
+      }
+
+      /* Bonus: input border colors */
+      .input-success {
+        border: 1px solid green;
+      }
+
+      .input-error {
+        border: 1px solid red;
+      }
+
+      /* Optional: a little spacing for the note */
+      .small-note {
+        font-size: 0.9em;
+        color: #555;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" ng-controller="LunchCheckController">
+      <h1>Lunch Checker</h1>
+
+      <div class="form-group">
+        <input id="lunch-menu"
+               type="text"
+               placeholder="list comma separated dishes you usually have for lunch"
+               class="form-control"
+               ng-model="lunchItems"
+               ng-class="inputClass">
+        <!-- Bonus requirement note: empty items not counted -->
+        <p class="small-note">
+          Note: empty items (like <code>, ,</code>) are <strong>not</strong> counted as lunch items.
+        </p>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-default"
+                ng-click="checkLunch()">
+          Check If Too Much
+        </button>
+      </div>
+
+      <div class="form-group message" ng-class="messageClass">
+        {{ message }}
+      </div>
+    </div>
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <!-- Your app code -->
+    <script src="app.js"></script>
+  </body>
+</html>
